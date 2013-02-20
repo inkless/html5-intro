@@ -46,7 +46,9 @@ Webview上，需要研究
 
 一个典型的优化过的移动端站点通常含有这样的一个属性：
 
+```html
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+```
     
 Viewport的属性共有7种：
 
