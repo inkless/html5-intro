@@ -344,7 +344,7 @@ HTML5中对元素的 **data-xxx** 属性做了特殊的对待：
 ```html
     <div id="intro_dataset" data-id="good" data-name="joe" data-screen-name="user1"></div>
     <script type="text/javascript">    
-	var el = document.querySelector('#intro_dataset');
+    var el = document.querySelector('#intro_dataset');
 	el.setAttribute('data-foo', 'bar');
 	var html = [];
 	for (var key in el.dataset) {
@@ -373,6 +373,11 @@ HTML5中对元素的 **data-xxx** 属性做了特殊的对待：
 强烈推荐：**Apache: weinre**
 
 <http://people.apache.org/~pmuellr/weinre/>
+
+### 小结
+这里介绍了移动端的viewport，orientation，以及一些新的HTML5元素，属性。
+
+移动端必然是一个趋势，相关的开发这里只是一个抛砖引玉，还是需要在持续的使用中总结和尝试。
 
 ## II. CSS3
 
@@ -555,6 +560,7 @@ div {
 
 #### skew()
 给定X轴角度和Y轴角度，将X轴，Y轴顺时针旋转
+
 ![](http://m1.img.libdd.com/farm4/2013/0221/17/87E12E003EC2E8EFF2CF592C2D031A67C3F99F8025A55_148_117.GIF)
 
 ```css
@@ -622,20 +628,271 @@ key-frames实际上是定义每个阶段的状态，有这样的一些关键词�
 * 25%
 * 100%
 
-from 与 0%, to 与 100% 是相同的，百分比表示动画进行到百分比的时间时的状态，比如我们定义一个最简单的 keyframes:
+from 与 0%, to 与 100% 是相同的，百分比表示动画进行到百分比的时间时的状态，比如我们定义一个简单的 keyframe 和一个复杂的 keyframe:
 
 ```css
-
+@-webkit-keyframes simple {
+    from { background: red }
+    to { background: yellow }
+}
+@-webkit-keyframes complex {
+	0%		{-webkit-transform: rotate(0deg);left:0px;}
+	25%		{-webkit-transform: rotate(20deg);left:0px;}
+	50%		{-webkit-transform: rotate(0deg);left:500px;}
+	55%		{-webkit-transform: rotate(0deg);left:500px;}
+	70%		{-webkit-transform: rotate(0deg);left:500px;background:#1ec7e6;}
+	100%	{-webkit-transform: rotate(-360deg);left:0px;}
+}
 ```
 
-### Media Query
+#### Animation Properties
+Animation的属性需要指明它需要使用哪个keyframe, 一般来说第一个参数就是指定的那个keyframe的名称。如下：
 
-<http://www.css3maker.com/>
-<http://cssdeck.com/>
+```css
+.box {
+    animation: simple 5s;
+    -o-animation: simple 5s; /* Opera */
+    -moz-animation: simple 5s; /* Firefox */
+    -webkit-animation: simple 5s; /* Safari and Chrome */
+}
+```
+
+Animation含有较多的属性：
+
+* animation-name: 指定的 keyframe 名称
+* animation-duration: 动画持续时间
+* animation-timing-function: 动画时间函数
+* animation-delay: 动画延迟开始的时间
+* animation-iteration-count: 动画执行次数 1/2/infinite
+* animation-direction: 动画执行方向 normal/alternate
+* animation-play-state: 动画播放状态 paused/running
+
+所以相比于简化版的 -webkit-animation，animation的属性还可以这样更加详细的指定：
+
+```css
+.box {
+    -webkit-animation-name: simple;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+}
+```
+
+#### 监测Animation End
+与 transitionEnd 类似，可以通过setTimeout来处理，各浏览器也有对应的事件：
+
+* animationEnd
+* oAnimationEnd
+* webkitAnimationEnd
+
+### Media Query
+在前面的篇章中，我们已经使用到了媒体查询的属性。可以说这个是当下比较热门的技术解决方案了。这里对此做一个基本的介绍：
+
+#### 使用方法
+Media Query的引用语法有几种，可以根据需求和代码的风格来处理：
+
+##### inline
+直接写在CSS文件中或者style里
+
+```css
+@media screen and (min-width: 1024px) {
+    /* Some CSS for Width >= 1024 */
+    .desc { background: red; }
+}
+```
+
+##### link
+通过link的media属性来处理：
+
+```html
+<link rel="stylesheet" media="only screen and (max-device-width:360px)" href="mobile360.css" type="text/css" />
+```
+
+##### style+import
+通过style的media属性，然后import相应的css文件：
+
+```html
+<style type="text/css" media="screen and (min-width:1440px)">
+    @import url("huge.css");
+</style>
+```
+
+实际操作中，还是推荐使用前两种方法。
+
+#### 设备类型
+
+1. all：所有设备
+2. screen ：电脑显示器
+3. print：打印用纸或打印预览视图
+4. handheld：便携设备
+5. tv：电视机类型的设备
+6. speech：语意和音频盒成器
+7. braille：盲人用点字法触觉回馈设备
+8. embossed：盲文打印机
+9. projection：各种投影设备
+10. tty：使用固定密度字母栅格的媒介，比如电传打字机和终端
+
+#### 设备特性：
+
+1. width：浏览器宽度
+2. height：浏览器高度
+3. device-width：设备屏幕分辨率的宽度值
+4. device-height：设备屏幕分辨率的高度值
+5. orientation：浏览器窗口的方向纵向还是横向，当窗口的高度值大于等于宽度时该特性值为portrait，否则为landscape。
+6. aspect-ratio：比例值，浏览器的纵横比.
+7. device-aspect-ratio：比例值，屏幕的纵横比.
+8. color：设备使用多少位的颜色值，如果不是彩色设备，值为0
+9. color-index：色彩表的色彩数
+10. monochrome：单色帧缓冲器每个像素的字节
+11. resolution：分辨率值，设备分辨率值
+12. scan：电视机类型设备扫描方式，progressive或interlace
+13. grid：只能指定两个值0或1
+
+#### 一些浏览器各异的设备特性
+* 设备屏幕像素比
+1. Webkit: -webkit-device-pixel-ratio
+2. Firefox: -moz-device-pixel-ratio
+3. Opera: -o-device-pixel-ratio
+
+#### 几个关键词
+
+* max & min
+
+*max* 和 *min* 表示大于等于，小于等于：
+
+* min-device-width: 361px 表示 if 设备宽度 >= 361px
+* max-device-width: 640 表示 if 设备宽度 <= 640px
+
+如下表示当设备宽度介于 361px 和 640px 之间应用规则 mobile640.css:
+
+```html
+<link rel="stylesheet" media="screen and (min-device-width:361px) and (max-device-width:640px)" href="mobile640.css" type="text/css" />
+```
+
+* and
+
+*and* 用来表示同时符合多个表达式的情况。
+
+```html
+<link rel="stylesheet" media="screen and (min-device-width:361px) and (max-device-width:640px)" href="mobile640.css" type="text/css" />
+```
+
+* only
+
+*only* 用来表明仅仅符合该Query的才引用后续的style。
+
+一般来说，*only* 更多的是用来防止支持 media 属性，但不支持 Media Query的浏览器错误解析。
+
+```html
+<link rel="stylesheet" media="only screen and (max-device-width:360px)" href="mobile360.css" type="text/css" />
+```
+
+* not
+
+顾名思义，*not* 的作用就是排除不符合表达式的设备
+
+```html
+<link rel="stylesheet" media="not print (max-width:1024px)" href="mobile360.css" type="text/css" />
+```
+
+* prefix- related
+
+对于带有前缀的设备特性，涉及到的 *min* 和 *max* 关键字略有不同：
+
+* -o-min-device-pixel-ratio
+* -o-webkit-device-pixel-ratio
+* min--moz-device-pixel-ratio
+
+### 小结
+CSS3 内容非常之多，这里只是涉及到一部分，有兴趣的话，大家可以私下再了解。
+这里也顺便推荐两个小站点，挺有意思：
+
+* <http://www.css3maker.com/>
+* <http://cssdeck.com/>
 
 ## III. Application Cache, Storage
 ### Application Cache
-<http://everytimezone.com/>
+人们都认为Web应用在断网的时候就无法运行了。
+
+但是Application Cache给出了一个否定！
+
+可以参考这个网站：<http://everytimezone.com/>，
+断网的时候它照样可以打开，并且刷新页面。只要你不清除缓存。
+实际上，这不只是断网的问题，它还从大大减少了带宽的问题，降低了服务器压力。
+
+#### `manifest`
+要激活 Application Cache，必须在 html 标签上加上一个属性 `manifest`。
+
+```html
+<html manifest="example.appcache">
+  ...
+</html>
+```
+
+一个最简单的 `manifest` 将会像这样：
+
+    CACHE MANIFEST
+    index.html
+    stylesheet.css
+    images/logo.png
+    scripts/main.js
+
+There are a couple of things to note:
+这里有几点需要注意：
+
+* `CACHE MANIFEST` 是必须的，且必须在第一行
+* 有些浏览器对于可离线存储的数据是有限制的，如果你希望使用 `unlimitedStorage` ，参考那个浏览器的具体设定，比如 Chrome 仅允许 App 和 Extension 使用，通过设置 `manifest.json`
+* 如果 `manifest` 下载失败，浏览器将使用旧的 `manifest`
+
+来看一个较为复杂的 `manifest`
+
+    CACHE MANIFEST
+    # 2010-06-18:v2
+    
+    # Explicitly cached 'master entries'.
+    CACHE:
+    /favicon.ico
+    index.html
+    stylesheet.css
+    images/logo.png
+    scripts/main.js
+    
+    # Resources that require the user to be online.
+    NETWORK:
+    login.php
+    /myapi
+    http://api.twitter.com
+    
+    # static.html will be served if main.py is inaccessible
+    # offline.jpg will be served in place of all images in images/large/
+    # offline.html will be served in place of all other .html files
+    FALLBACK:
+    /main.py /static.html
+    images/large/ images/offline.jpg
+    *.html /offline.html
+
+#### 更新Cache
+Application Cache只有在一下情况才会更新：
+
+* 用户清空缓存
+* `manifest`文件被修改，注意，改变 `manifest` 文件列表中的文件并不会更新缓存，只有`manifest`文件本身被修改才行
+* App Cache被用程序强制更新
+
+```javascript
+var appCache = window.applicationCache;
+appCache.update(); // Attempt to update the user's cache.
+if (appCache.status == window.applicationCache.UPDATEREADY) {
+  appCache.swapCache();  // The fetch was successful, swap in the new cache.
+}
+```
+
+Application Cache的更多的内容可以参考：
+
+<http://www.whatwg.org/specs/web-apps/current-work/#applicationcache>
+
 ### localstorage
 ### WebSQL
 ### IndexedDB
@@ -644,10 +901,22 @@ from 与 0%, to 与 100% 是相同的，百分比表示动画进行到百分比�
 
 ## V. File Operation, Web Worker & Web Socket
 
-`new Worker`
-
 ## VI. Other Related 2  Responsive Design
 
 
 ## VII. Other Related 3  ECMAScript 5
 
+
+## 参考文献及网站：
+
+* http://dev.w3.org/html5/html-author/
+* http://www.html5rocks.com/
+* https://developer.mozilla.org/en/docs/HTML
+* http://diveintohtml5.info/
+* http://www.w3schools.com/
+* http://www.lovevoi.com/?p=166
+* http://adamlu.com/?p=633
+* http://www.iyunlu.com/view/Front-end/70.html
+* http://iloves.org/2011/05/high-performance-mobile/
+* http://blog.sina.com.cn/s/blog_6d48e77101016kzr.html
+* 等等……
