@@ -111,6 +111,7 @@ PPI准确的计算公式：
 ![](http://m2.img.libdd.com/farm5/2013/0220/21/88C52C0E0F08D71BF4EBEEA0F4100E7AB13D0E6ECB72B_250_400.jpg)
 
 ##### 通过Media Query实现不同屏幕加载不同的CSS
+
 ```css
 .header {
 background:url (medium-density-image.png);
@@ -235,32 +236,124 @@ $(window).on("orientationchange", function() { /*Do Something*/ });
 }
 ```
 
-##### 正常的图片
+##### 图片 img
 
 ```html
-<img data-src="http://path/of/pic/normal.png" data-src-2x="http://path/of/pic/large.png" width="400px" height="300px"/>
-<script type="text/javascript">
-    $('img[data-src-2x]').each(function() {
-        if (window.devicePixelRatio === 2) {
-            // this.src = this.dataset.src2x;
-            this.src = $(this).attr("data-src-2x");
-        }else {
-            // this.src = this.dataset.src;
-            this.src = $(this).attr("data-src");
-        }
-    });
-</script>
+    <img data-src="http://path/of/pic/normal.png" data-src-2x="http://path/of/pic/large.png" width="400px" height="300px"/>
+    <script type="text/javascript">
+        $('img[data-src-2x]').each(function() {
+            if (window.devicePixelRatio === 2) {
+                // this.src = this.dataset.src2x;
+                this.src = $(this).attr("data-src-2x");
+            }else {
+                // this.src = this.dataset.src;
+                this.src = $(this).attr("data-src");
+            }
+        });
+    </script>
 ```
 
 ### Online & Connection
 #### navigator.onLine
+如果需要判断当前手机是否联网，其实很简单。。。
+
+通过 JavaScript 判断 **navigator.onLine**
+返回值 true/false
+
+同时还有两个 JavaScript的Events:
+**ononline**, **onoffline**
 
 #### navigator.connection
 
-**注：在目前的手机Chrome上无效果**
+##### Android 2.2+ 以后的内置Webkit中：
+
+```json
+navigator.connection = {
+    "type": "4",
+    "UNKNOWN": "0",
+    "ETHERNET": "1",
+    "WIFI": "2",
+    "CELL_2G": "3",
+    "CELL_3G": "4"
+}
+```
+
+我们可以写出类似于这样的代码：
+
+```javascript
+if (navigator.onLine) {
+    var connection =    navigator.connection ||
+                        navigator.webkitConnection ||
+                        navigator.mozConnection ||
+                        {type: 0};
+    switch(connection.type) {
+        case connection.CELL_3G: // 3G
+            connectionSpeed = 'mediumbandwidth';
+            break;
+        case connection.CELL_2G: // 2G
+            connectionSpeed = 'lowbandwidth';
+            break;
+        default: // WIFI, ETHERNET, UNKNOWN
+            connectionSpeed = 'highbandwidth';
+            break;
+    }
+}
+```
+
+**注：ECMAScript 5中有不同的定义，而且在目前的手机Chrome上无效果**
 
 ### Semantics
+新的元素，含有语意的元素等
 #### Form
+
+```html
+<style>
+  [required] {
+    border-color: #88a;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+  }
+  :invalid {
+    border-color: #e88;
+    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  }
+</style>
+<input type="text" required />
+<input type="email" value="zhang.gd@foxmail.com" />
+<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+<input type="range" min="0" max="50" value="10" />
+<input type="search" results="10" placeholder="搜索..." />
+<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\d{3}\)?[-\s]\d{4}[-\s]\d{4}.*?$" />
+<input type="color" placeholder="e.g. #bbbbbb" />
+<input type="number" step="1" min="-5" max="10" value="0" />
+```
+
+<style>
+  [required] {
+    border-color: #88a;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+  }
+  :invalid {
+    border-color: #e88;
+    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  }
+  .intro_form {
+
+  }
+</style>
+
+<div class="intro_form">
+	<input type="text" required />
+	<input type="email" value="zhang.gd@foxmail.com" />
+	<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+	<input type="range" min="0" max="50" value="10" />
+	<input type="search" results="10" placeholder="搜索..." />
+	<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\d{3}\)?[-\s]\d{4}[-\s]\d{4}.*?$" />
+	<input type="color" placeholder="e.g. #bbbbbb" />
+	<input type="number" step="1" min="-5" max="10" value="0" />
+</div>
+
+
+
 #### Progress & Meter
 #### dataset
 #### datalist
