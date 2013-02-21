@@ -45,123 +45,1622 @@ URL: https://code.google.com/p/io-2012-slides
   
 <slide>
 <hgroup>
-<h1>HTML5 INTRODUCTION</h1>
-</hgroup>
-</slide>
-
-<slide>
-<hgroup>
 <h2>What's new in HTML5</h2>
+</hgroup>
+<article class="none">
 <ul>
-<li>New Elements, Attributes</li>
+<li>Semantic Elements, Attributes</li>
 <li>Canvas, SVG</li>
 <li>CSS3</li>
 <li>Video, Audio</li>
 <li>Storage</li>
+<li>Online, Connection</li>
 <li>Web Worker, File Operation</li>
-<li>etc.</li>
+<li>
+<p>etc.</p>
+<pre><code>注意：请使用 Chrome 浏览，因为很多地方我并没有针对Firefox, Opera开发
+</code></pre>
+</li>
 </ul>
-</hgroup>
-<article class="fill">
-<aside class="note">
-  这些是啥来的，其实有人知道么
-</aside>
 </article>
 </slide>
 
 <slide>
 <hgroup>
-<p>HTML5涉及到的新的东西实在太多了，我自己本身也有很多不了解。而且我也不想讲得太泛泛，所以想寻找几个我们工作中最可能用到的来讲讲，大家共同学习</p>
+<h2>Outline</h2>
 </hgroup>
-<article class="fill">
-<p>除了HTML5，CSS3，有些不算是属于HTML5但是跟工作相关的一些，也想籍此顺便讲一讲，比如<em>移动端开发</em>, <em>responsive design</em>, <em>ECMAScript 5</em></p>
-</article>
-</slide>
-
-<slide>
-<hgroup>
-<p><strong>注意：</strong> 这绝对不是一个完整的HTML5的介绍，有机会的话或许会慢慢补齐。
-但是我发现如果完整的去学习一套理论，对谁都是一个很大的负担。我只是希望大家看过这些介绍之后，能确实有所获得，那么在以后的学习中，能带着一些思考去学习，可能效果会更好。</p>
-</hgroup>
-<article class="fill">
+<article class="none">
+<ul>
+<li>移动端开发</li>
+<li>CSS3</li>
+<li>Application Cache</li>
+</ul>
+<p><strong>注意：</strong> 这绝对不是一个完整的HTML5的介绍，有机会的话或许会慢慢补齐。</p>
+<p>其实如果完整的去学习一套理论，对谁都是一个很大的负担。我只是希望大家看过这些介绍之后，能确实有所获得，那么在以后的学习中，能带着一些思考去学习，可能效果会更好。</p>
 <pre><code>我刚开始学习JavaScript的时候，看的JavaScript: the Definitive Guide。
 但是事实证明，当时选择那本书绝对是不明智的，事实上我也没能坚持看完，
 看了几十页就不看了。在做了不少的项目和一些历练之后，我回过头再去看这
-本大而全的书的时候，体会则完全不一样了。所以从我自己的角度来说，有的
-时候，我觉得像捡面包屑一样，一点一点捡一些，有所心得之后，再找一本大
-而全的权威指南看一遍，那种融会贯通的感觉肯定很爽。
+本大而全的书的时候，体会则完全不一样了，会有一种融会贯通的感觉。
 </code></pre>
 </article>
 </slide>
 
 <slide>
 <hgroup>
-<h2>I. CSS3</h2>
-<p><style>
-  [required] {
-    border-color: #88a;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
-  }
-  :invalid {
-    border-color: #e88;
-    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
-  }
-</style>
-<input type="text" required />
-<input type="email" value="zhang.gd@foxmail.com" />
-<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
-<input type="range" min="0" max="50" value="10" />
-<input type="search" results="10" placeholder="搜索..." />
-<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\\d{3}\)?[-\\s]\\d{4}[-\\s]\\d{4}.*?$" />
-<input type="color" placeholder="e.g. #bbbbbb" />
-<input type="number" step="1" min="-5" max="10" value="0" /></p>
+<h2>I. 移动端的开发</h2>
 </hgroup>
 </slide>
 
 <slide>
 <hgroup>
-<h2>II. Canvas</h2>
+<h3>Viewport</h3>
 </hgroup>
-</slide>
+<article class="none">
+<p>一个典型的优化过的移动端站点通常含有这样的一个属性：</p>
+<pre class="prettyprint" data-lang="html">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</pre>
 
-<slide>
-<hgroup>
-<h2>III. Storage, Application Cache</h2>
-</hgroup>
-</slide>
-
-<slide>
-<hgroup>
-<h2>IV. File Operation &amp; Web Worker</h2>
-</hgroup>
-<article class="fill">
-<p><code>new Worker</code></p>
+<p>Viewport的属性共有7种：</p>
+<ul>
+<li><strong>width</strong> = [ 像素值 | device-width ]</li>
+<li><strong>height</strong> = [ 像素值 | device-height ]</li>
+<li><strong>initial-scale</strong> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><strong>minimum-scale</strong> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><strong>maximum-scale</strong> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><strong>user-scalable</strong> = [ yes | no ]</li>
+<li><strong>target-densitydpi</strong> = [ DPI值 | device-dpi| high-dpi | medium-dpi | low-dpi ]</li>
+</ul>
 </article>
 </slide>
 
 <slide>
 <hgroup>
-<h2>V. 移动端的开发</h2>
-<p>viewport, orientation, online, apple-touch-icon 等
-移动端的调试</p>
+<h3>设置 <code>width=device-width</code></h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="html">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</pre>
+
+<p>竖屏
+<img src="http://m2.img.libdd.com/farm4/2013/0220/20/9FF8D77501969C9923D8216BD707BBB50C5E015895EBC_500_800.jpg" width="250">
+横屏
+<img alt="Alt text" src="http://m2.img.libdd.com/farm4/2013/0220/20/267EE7C2B1B9EB81A354336B50E09D49442F7E2266DE1_500_313.jpg" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>设置 <code>width=320</code></h3>
+<p><pre class="prettyprint" data-lang="html">
+&lt;meta name="viewport" content="width=320"&gt;
+</pre></p>
+</hgroup>
+<article class="none">
+<p>竖屏
+<img alt="Alt text" src="http://m1.img.libdd.com/farm4/2013/0220/20/09C2E15DF71C7DFD35CD3BA045996DF6CBBDC13D15E0C_250_400.jpg" />
+<img alt="Alt text" src="http://m1.img.libdd.com/farm5/2013/0220/20/8CEFCEC4E346906565D143E940FDD97AC27920920B1BA_500_313.jpg" />
+横屏</p>
+<p>注: 我的经验中，设置了固定的width以后，scale相关属性一般不生效</p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>设置 scale</h3>
+</hgroup>
+<article class="none">
+<ul>
+<li><code>initial-scale</code> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><code>minimum-scale</code> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><code>maximum-scale</code> = Float Number(如 1.0 / 1 / 0.5)</li>
+<li><code>user-scalable</code> = [ yes | no ]</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>设置DPI</h3>
+</hgroup>
+<article class="none">
+<pre><code>CSS pixel与device pixel
+</code></pre>
+<ul>
+<li><strong>CSS pixel</strong>： 浏览器使用的抽象单位， 主要用来在网页上绘制内容。</li>
+<li><strong>device pixel</strong>： 显示屏幕的的最小物理单位，每个dp包含自己的颜色、亮度。</li>
+</ul>
+<p>每个CSS pixel所含有的device pixel不是固定的，一般来说</p>
+<pre><code>1 CSS pixel = devicePixelRatio^2 个device pixel
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>PPI/DPI</h3>
+</hgroup>
+<article class="none">
+<p>PPI，有时也叫DPI，所表示的是每英寸所拥有的像素（pixel）数目，数值越高，即代表显示屏能够以越高的密度显示图像。</p>
+<p><strong>注：</strong>这里的像素，指的是device pixels。</p>
+<p>PPI准确的计算公式：</p>
+<p><img alt="" src="http://m2.img.libdd.com/farm4/2013/0220/21/BFA4B3989F54DD003418E3CFF9B23677E5E7703F62222_250_155.jpg" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>常见的一些屏幕尺寸和对应的 DPI</h3>
+</hgroup>
+<article class="none">
+<p><img alt="" src="http://m1.img.libdd.com/farm5/2013/0220/21/970E5D7327BE2E522E556C4787C63944EB1A1D292D92F_640_426.JPEG" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>实际设置了target-densitydpi之后的页面:</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="html">
+&lt;meta name="viewport" content="target-densitydpi=device-dpi,width=device-width,
+initial-scale=1,maximum-scale=1">
+</pre>
+
+<p><img alt="" src="http://m2.img.libdd.com/farm5/2013/0220/21/88C52C0E0F08D71BF4EBEEA0F4100E7AB13D0E6ECB72B_250_400.jpg" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>通过Media Query实现不同屏幕加载不同的CSS</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="css">
+.header {
+    background:url (medium-density-image.png);
+}
+@media screen and (-webkit-device-pixel-ratio:2.0) {
+    .header { background:url (retina-density-image.png);} /* CSS for retina-density screens */
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) and (-webkit-max-device-pixel-ratio:1.99){
+    .header { background:url (high-density-image.png);} /* CSS for high-density screens */
+}
+@media screen and (-webkit-max-device-pixel-ratio:0.75) {
+    .header { background:url (low-density-image.png);} /* CSS for low-density screens */
+}
+</pre>
+
+<ul>
+<li>注1：使用了target-densitydpi属性以后，所有的Media Query的数值会产生改变</li>
+<li>注2：更多的 Media Query 稍后再详细介绍</li>
+<li>注3：其实对于图片的处理，已经有更为优美的解决方案--响应式图片</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Orientation</h3>
+</hgroup>
+<article class="none">
+<p>移动端用户有的时候会开启自动旋转，需要考虑旋转之后的布局等安排
+一般说来，处理的方式有两种：</p>
+<ul>
+<li>
+<p>JavaScript</p>
+</li>
+<li>
+<p>Media Query</p>
+</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Orientation - JavaScript</h3>
+</hgroup>
+<article class="none">
+<p>可以通过JavaScript来监控屏幕转动</p>
+<pre class="prettyprint" data-lang="javascript">
+window.onorientationchange = function() {
+    /*Do Something*/ 
+};
+// 或者使用jQuery
+$(window).on("orientationchange", function() {
+    /*Do Something*/
+});
+</pre>
+
+<p>同时，还有一个属性:</p>
+<p><strong><em>window.orientation</em></strong> 表明当前旋转的角度（逆时针方向）</p>
+<p>0 / 90 / -90 / 180</p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Orientation - Media Query</h3>
+</hgroup>
+<article class="none">
+<p>如果仅仅是跟布局相关的，通过Media Query或许是最好的选择</p>
+<pre class="prettyprint" data-lang="css">
+@media (orientation: portrait) {
+/* Some CSS for portrait */
+}
+@media (orientation: landscape) {
+/* Some CSS for landscape */
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Orientation - Media Query</h3>
+</hgroup>
+<article class="none">
+<p>其实很多时候使用Media Query，很多时候也不需要考虑是横向还是纵向。
+只需要针对宽度做适配即可：</p>
+<pre class="prettyprint" data-lang="css">
+@media screen and (max-width: 479px) {
+/* Some CSS for Width &lt; 480 */
+.desc { background: yellow; }
+}
+@media screen and (min-width: 480px) and (max-width: 639px) {
+/* Some CSS for 480 &lt;= Width &lt; 640 */
+.desc { background: blue; }
+}
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+/* Some CSS for 640 &lt;= Width &lt; 1024 */
+.desc { background: green; }
+}
+@media screen and (min-width: 1024px) {
+/* Some CSS for Width >= 1024 */
+.desc { background: red; }
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>移动设备上的效果</h3>
+<p><pre class="prettyprint" data-lang="css">
+@media screen and (max-width: 479px) {.desc { background: yellow; } }
+@media screen and (min-width: 640px) and (max-width: 1023px) {.desc { background: green; } }
+</pre></p>
+</hgroup>
+<article class="none">
+<p>宽高比400x519
+<img alt="" src="http://m3.img.libdd.com/farm4/2013/0221/13/76C11A965272F8CF10397A419526AFCA9798BB957EDDD_250_400.jpg" />
+宽高比640x327
+<img alt="" src="http://m1.img.libdd.com/farm5/2013/0221/13/25E4FF80684612516CA99152818AB1EBA5A5EEF99E75E_250_156.jpg" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>电脑上的效果</h3>
+<p><pre class="prettyprint" data-lang="css">
+@media screen and (min-width: 1024px) {.desc { background: red; } }
+</pre>
+<img alt="" src="http://m2.img.libdd.com/farm5/2013/0221/23/7ABFC3CE14F2184C006775A2730C5F55F0EC71285A00D_800_551.jpg" /></p>
 </hgroup>
 </slide>
 
 <slide>
 <hgroup>
-<h2>VI. Other Related 2  响应式设计</h2>
+<h3>简单的Retina屏幕优化方案</h3>
+</hgroup>
+<article class="none">
+<p>前文中讲到通过 <strong>target-densitydpi</strong> 改变 devicePixelRatio 来优化retina屏幕显示。
+但是实际操作中，这样会非常吃力。</p>
+<pre><code>实际上，目前也没有一个权威的并且成熟的解决方案。（我还没找到）
+各种方案也是百花齐放，我这里只介绍一种我自己的解决方案（绝对不是最好的方案），
+有兴趣的同学可以多些了解关于 **响应式图片** 相关的内容。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>背景图片</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="css">
+.header { background-image:url(http://path/of/pic/normal.png);
+/* 普通屏幕 */ 
+/* ------------ Retina ------------ */ 
+@media only screen and (-o-min-device-pixel-ratio: 2/1), /* Opera */ 
+    only screen and (min--moz-device-pixel-ratio: 2), /* Firefox 16 之前 */ 
+    only screen and (-webkit-min-device-pixel-ratio: 2), /* Webkit */ 
+    only screen and (min-resolution: 240dpi), /* 标准 */ 
+    only screen and (min-resolution: 2dppx) /* 标准 */ {
+    .header {
+        background-image:url(http://path/of/pic/large.png); 
+        background-size: 50% 50%;
+    }
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>图片</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="html">
+&lt;img data-src="http://path/of/pic/normal.png" 
+data-src-2x="http://path/of/pic/large.png" width="400px" height="300px"/>
+&lt;script type="text/javascript">
+    $('img[data-src-2x]').each(function() {
+        if (window.devicePixelRatio === 2) {
+            // this.src = this.dataset.src2x;
+            this.src = $(this).attr("data-src-2x");
+        }else {
+            // this.src = this.dataset.src;
+            this.src = $(this).attr("data-src");
+        }
+    });
+&lt;/script>
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>Online &amp; Connection</h2>
 </hgroup>
 </slide>
 
 <slide>
 <hgroup>
-<h2>VII. Other Related 3  ECMAScript 5</h2>
+<h3>navigator.onLine</h3>
+</hgroup>
+<article class="none">
+<p>如果需要判断当前手机是否联网，其实很简单。。。</p>
+<p>通过 JavaScript 判断 <code>navigator.onLine</code>：返回值 <code>true</code> / <code>false</code></p>
+<pre class="prettyprint" data-lang="html">
+    &lt;button id="intro-online">点我查看是否在线！&lt;/button>
+    &lt;script type="text/javascript">
+        var onlineBtn = document.getElementById("intro-online");
+        onlineBtn.addEventListener("click", function() {
+            if (navigator.onLine) alert("ONLINE!");
+            else alert("OFFLINE!");
+        });
+    &lt;/script>
+</pre>
+
+<p><button id="intro-online">点我查看是否在线！</button>
+<script type="text/javascript">
+    var onlineBtn = document.getElementById("intro-online");
+    onlineBtn.addEventListener("click", function() {
+        if (navigator.onLine) alert("ONLINE!");
+        else alert("OFFLINE!");
+    });
+</script></p>
+<p>同时还有两个 JavaScript的 Events: <code>ononline</code>, <code>onoffline</code></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>navigator.connection</h3>
+</hgroup>
+<article class="none">
+<p>Android 2.2+ 以后的内置Webkit中：</p>
+<pre class="prettyprint" data-lang="javascript">
+navigator.connection = {
+    "type": "4",
+    "UNKNOWN": "0",
+    "ETHERNET": "1",
+    "WIFI": "2",
+    "CELL_2G": "3",
+    "CELL_3G": "4"
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>navigator.connection</h3>
+</hgroup>
+<article class="none">
+<p>我们可以写出类似于这样的代码：
+<pre class="prettyprint" data-lang="javascript">
+if (navigator.onLine) {
+    var connection =    navigator.connection || navigator.webkitConnection ||
+                        navigator.mozConnection || {type: 0};
+    switch(connection.type) {
+        case connection.CELL_3G: // 3G
+            connectionSpeed = 'mediumbandwidth';
+            break;
+        case connection.CELL_2G: // 2G
+            connectionSpeed = 'lowbandwidth';
+            break;
+        default: // WIFI, ETHERNET, UNKNOWN
+            connectionSpeed = 'highbandwidth';
+    }
+}
+</pre></p>
+<p><strong>注：ECMAScript 5中有不同的定义，而且在目前的手机Chrome上无效果</strong></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>Semantics</h2>
+</hgroup>
+<article class="none">
+<pre><code>新的元素，含有语意的元素等
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Form</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="html">
+&lt;style>
+  [required] {border-color: #88a; -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5); }
+  :invalid {border-color: #e88; -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8); }
+&lt;/style>
+&lt;input type="text" required />
+&lt;input type="email" value="zhang.gd@foxmail.com" />
+&lt;input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+&lt;input type="range" min="0" max="50" value="10" />
+&lt;input type="search" results="10" placeholder="搜索..." />
+&lt;input type="tel"  placeholder="021-22228888" pattern="^\d{3,4}[-\s]\d{8}$" />
+&lt;input type="color" placeholder="e.g. #bbbbbb" />
+&lt;input type="number" step="1" min="-5" max="10" value="0" />
+</pre>
+
+<style>
+  [required] {border-color: #88a; -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5); }
+  :invalid {border-color: #e88; -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8); }
+</style>
+
+<p><input type="text" required />
+<input type="email" value="zhang.gd@foxmail.com" />
+<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+<input type="range" min="0" max="50" value="10" />
+<input type="search" results="10" placeholder="搜索..." />
+<input type="tel"  placeholder="021-22228888" pattern="^\\d{3,4}[-\\s]\\d{8}$" />
+<input type="color" placeholder="e.g. #bbbbbb" />
+<input type="number" step="1" min="-5" max="10" value="0" />
+<script type="text/javascript">
+    document.querySelector('input[type="tel"]').pattern = "^\\d{3,4}[-\\s]\\d{8}$";
+</script></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Form表单的type对键盘的影响</h3>
+</hgroup>
+<article class="none">
+<p><img alt="" src="http://m2.img.libdd.com/farm4/2013/0221/14/F2E43C3C37AB6E5126725151EE08FE774D0994A7FCAF5_881_302.PNG" /></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Progress &amp; Meter</h3>
+</hgroup>
+<article class="none">
+<p>通过HTML5的标签实现进度类的有的时候显得非常简单……</p>
+<pre class="prettyprint" data-lang="html">
+    &lt;meter min="0" max="100" low="40" high="90" optimum="100" value="91">A+&lt;/meter>
+    &lt;progress value="75" max="100">3/4 complete&lt;/progress>
+    &lt;progress>&lt;/progress>
+</pre>
+
+<p><meter min="0" max="100" low="40" high="90" optimum="100" value="91">A+</meter></p>
+<progress value="75" max="100">3/4 complete</progress>
+
+<p><br />
+<progress></progress></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>datalist</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="html">
+&lt;input list="names"/>
+&lt;datalist id="names">
+    &lt;option value="Abe"/>
+    &lt;option value="Carl"/>
+    &lt;option value="David"/>
+    &lt;option value="Joe"/>
+    &lt;option value="Mac"/>
+    &lt;option value="Michael"/>
+    &lt;option value="Peter"/>
+&lt;/datalist>
+</pre>
+
+<style type="text/css">
+#intro-datalist {
+    border: 1px solid #CCC;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px inset;
+    padding: 3px 5px;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+}
+</style>
+
+<p><input id="intro-datalist" list="names"/>
+<datalist id="names">
+    <option value="Abe"/>
+    <option value="Carl"/>
+    <option value="David"/>
+    <option value="Joe"/>
+    <option value="Mac"/>
+    <option value="Michael"/>
+    <option value="Peter"/>
+</datalist></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>移动端调试</h3>
+</hgroup>
+<article class="none">
+<p>强烈推荐：</p>
+<pre><code>Apache: weinre
+</code></pre>
+<p><a href="http://people.apache.org/~pmuellr/weinre/">http://people.apache.org/~pmuellr/weinre/</a></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>小结</h3>
+</hgroup>
+<article class="none">
+<p>这里介绍了移动端的viewport，orientation，以及一些新的HTML5元素，属性。</p>
+<pre><code>移动端必然是一个趋势，
+相关的开发这里只是一个抛砖引玉，
+还是需要在持续的使用中总结和尝试。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>II. CSS3</h2>
+</hgroup>
+<article class="none">
+<pre><code>CSS3引入了非常多有趣的技术和效果。
+我们这里挑出一些比较成熟的，
+有代表性的来一起看看。
+其中有些可能大家已经很熟悉了，
+这里还是做一次回顾。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Border</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="css">
+.round {
+    border-radius: 30px;
+    -o-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+}
+</pre>
+
+<style type="text/css">
+#intro-border {
+    float: left;
+    width: 48%;
+    height: 200px;
+    background: green;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+}
+#intro-border2 {
+    float: right;
+    width: 48%;
+    height: 200px;
+    background: #eee;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+}
+#intro-border2 input {
+    margin: auto;
+    display: block;
+    margin-top: 90px;
+    width: 80%;
+}
+</style>
+
+<div id="intro-border"></div>
+
+<div id="intro-border2">
+    <input type="range" min="0" max="100" value="30" />
+</div>
+
+<script type="text/javascript">
+    var introBorderRange = document.querySelector("#intro-border2 input");
+    var introBorder = document.querySelector("#intro-border");
+    var introBorder2 = document.querySelector("#intro-border2");
+    introBorderRange.addEventListener("change", function() {
+        var v = this.value;
+        introBorder.style.borderRadius = v + "px";
+        introBorder.style.webkitBorderRadius = v + "px";
+        introBorder2.style.borderRadius = v + "px";
+        introBorder2.style.webkitBorderRadius = v + "px";
+    });
+</script>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Gradient</h3>
+<p>渐变效果很多时候可以替代早先图片background实现的效果。 而对于IE，如果不支持的渐变的，则使用 纯色/背景图片平铺/filter 即可。（Trade-off）</p>
+</hgroup>
+<article class="none">
+<pre><code>-webkit-gradient(type, start_point, end_point, from, to, / stop...);
+-webkit-gradient(type, inner_center, inner_radius, outer_center, outer_radius, from, to, / stop...)
+</code></pre>
+<ul>
+<li><code>type</code>: 渐变的类型，可以是线性渐变(linear)或是径向渐变(radial)</li>
+<li><code>start_point</code>: 渐变图像中渐变的起始点</li>
+<li><code>end_point</code>: 渐变图像中渐变的结束点</li>
+<li><code>stop</code>: color-stop()方法，指定渐变进程中特定的颜色</li>
+<li><code>inner_center</code>: 内部中心点，径向渐变起始圆环</li>
+<li><code>inner_radius</code>: 内部半径，径向渐变起始圆</li>
+<li><code>outer_center</code>: 外部渐变结束圆的中心点</li>
+<li><code>outer_radius</code>: 外部渐变结束圆的半径</li>
+<li><code>from</code>: 渐变起始点的颜色</li>
+<li><code>to</code>: 渐变结束点的颜色</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Gradient</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="css">
+.bg {
+    background: -webkit-gradient(linear, left top, left bottom, 
+        from(#00abeb), to(white), 
+        color-stop(0.5, white), color-stop(0.5, #66cc00))
+}
+.bg2 {
+    background: -webkit-gradient(radial, 430 50, 0, 430 50, 200, from(red), to(#000))
+}
+</pre>
+
+<style type="text/css">
+#intro-gradient .bg {
+    width: 100%;
+    height: 100px;
+    background: -webkit-gradient(linear, left top, left bottom, 
+        from(#00abeb), to(white), 
+        color-stop(0.5, white), color-stop(0.5, #66cc00))
+}
+#intro-gradient .bg2 {
+    width: 100%;
+    height: 100px;
+    background: -webkit-gradient(radial, 430 50, 0, 430 50, 200, from(red), to(#000))
+}
+</style>
+
+<div id="intro-gradient">
+    <div class="bg"></div>
+    <div class="bg2"></div>
+</div>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Shadow</h3>
+</hgroup>
+<article class="none">
+<p>阴影效果非常的炫丽，实现效果其实也很简单。</p>
+<pre><code>text-shadow: color x-offset y-offset radius
+-webkit-box-shadow: color x-offset y-offset radius
+</code></pre>
+<ul>
+<li><code>color</code>: 颜色</li>
+<li><code>x-offset</code>: 阴影横向的位移</li>
+<li><code>y-offset</code>: 阴影纵向的位移</li>
+<li><code>radius</code>: 阴影半径</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<pre class="prettyprint" data-lang="css">
+.sh {
+    text-shadow: rgba(64, 64, 64, 0.498039) 0px 0px 5px;
+    -webkit-box-shadow: rgba(0, 0, 128, 0.247059) 0px 0px 8px;
+}
+</pre>
+
+<style type="text/css">
+#intro-shadow {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    text-shadow: rgba(64, 64, 64, 0.498039) 0px 0px 5px;
+    -webkit-box-shadow: rgba(0, 0, 128, 0.247059) 0px 0px 8px;
+    font-size: 100px;
+    text-align: center;
+    line-height: 200px;
+}
+#intro-shadow-range {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    background: #eee;
+    margin-top: 50px;
+    padding-top: 60px;
+}
+#intro-shadow-text {
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+#intro-shadow-div {
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 60px;
+    width: 80%;
+}
+</style>
+
+<div id="intro-shadow">阴影样例</div>
+
+<div id="intro-shadow-range">
+    <input id="intro-shadow-text" type="range" min="0" max="30" value="5" />
+    <input id="intro-shadow-div" type="range" min="0" max="30" value="8" />
+</div>
+
+<script type="text/javascript">
+    var introShadowText = document.querySelector("#intro-shadow-text");
+    var introShadowDiv = document.querySelector("#intro-shadow-div");
+    var introShadow = document.querySelector("#intro-shadow");
+    introShadowText.addEventListener("change", function() {
+        introShadow.style.textShadow = "rgba(64, 64, 64, 0.498039) 0px 0px "+this.value+"px";
+    });
+    introShadowDiv.addEventListener("change", function() {
+        introShadow.style.webkitBoxShadow = "rgba(0, 0, 128, 0.247059) 0px 0px "+this.value+"px";
+    });
+</script>
+</hgroup>
+<article class="none">
+
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Transition</h3>
+</hgroup>
+<article class="none">
+<p>通常实现页面的动画效果都是通过 JavaScript 的setInterval 或者 setTimeout 控制CSS值的变化来实现一个连贯的动作。
+CSS3则是直接提供了这么一个非常简单的属性，省去了JavaScript的工作。</p>
+<pre><code>-webkit-transition: property time function delay
+</code></pre>
+<ul>
+<li>property: 具体对哪个属性进行 transition，可以是 all</li>
+<li>time: 动画执行的时间</li>
+<li>function: 动画的效果， ease/linear/ease-in/ease-out/ease-in-out/cubic-bezier(n,n,n,n)</li>
+<li>delay: 延迟执行的时间</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Transition</h3>
+</hgroup>
+<article class="none">
+<pre class="prettyprint" data-lang="css">
+#box {
+    -webkit-transition: left 2s ease;
+}
+#box.left {
+    left: 0px;
+}
+#box.right {
+    left: 920px;
+}
+</pre>
+
+<style type="text/css">
+#intro-transition {
+    height: 40px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: rgba(0, 0, 128, 0.247059) 0px 0px 4px;
+    padding: 10px;
+}
+#intro-transition-box {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    background: -webkit-gradient(radial, 20 20, 0, 20 20, 20, from(red), to(#000));
+    -webkit-transition: left 2s ease;
+}
+#intro-transition-box.left {
+    left: 0px;
+}
+#intro-transition-box.right {
+    left: 920px;
+}
+</style>
+
+<div id="intro-transition">
+    <div id="intro-transition-box" class="left"></div>
+</div>
+
+<p><br /></p>
+<p><button id="intro-transition-btn">点击我滚动上面的红球</button>
+<script type="text/javascript">
+    var introTransitionBtn = document.getElementById("intro-transition-btn");
+    var introTransitionBox = document.getElementById("intro-transition-box");
+    introTransitionBtn.addEventListener("click", function() {
+        if (introTransitionBox.className == "left") {
+            introTransitionBox.className = "right";
+        } else if (introTransitionBox.className == "right") {
+            introTransitionBox.className = "left";
+        }
+    })
+</script></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>监测Transition结束</h3>
+</hgroup>
+<article class="none">
+<p>动画完成后，我们往往要继续进行一些操作，或者继续动画。这时就需要监测Transition的结束了。这里介绍两种方法：</p>
+<pre><code>方法一： setTimeout
+</code></pre>
+<p>最传统也最简单的方法应该就是这个  <code>setTimeout</code> 了。大家也知道这个使用的方法：</p>
+<pre class="prettyprint" data-lang="javascript">
+setTimeout(function() {
+    // do something here
+}, 1000)
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>监测Transition结束</h3>
+</hgroup>
+<article class="none">
+<pre><code>方法二：onTransitionEnd
+</code></pre>
+<pre class="prettyprint" data-lang="javascript">
+var myDiv, transition;
+myDiv = document.getElementById('demo');
+if('ontransitionend' in window) {
+    transition = 'transitionend'; // Firefox
+} else if('onwebkittransitionend' in window) {
+    transition = 'webkitTransitionEnd'; // Chrome/Safari (+ Mobile Safari)/Android
+} else if('onotransitionend' in myDiv || navigator.appName == 'Opera') {
+    // 在Opera 10.61, DOM元素中不存在"onotransitionend" 属性, 所以转而判断appName是否为Opera
+transition = 'oTransitionEnd';
+} else {
+    transition = false; // 无视IE吧
+}
+myDiv.addEventListener(transition, function(){
+    //alert(Date.now() + ' transition end!');
+}, false);
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Transform</h3>
+</hgroup>
+<article class="none">
+<p>Transform提供了强大对于既有元素变形的能力。它拥有若干函数可以操作元素。
+甚至包括了一些3D方法，这里就只讲一些2D的功能。对于3D有兴趣的同学，可以私下交流～</p>
+<pre class="prettyprint" data-lang="css">
+div {
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Safari and Chrome */
+    -o-transform: rotate(30deg); /* Opera */
+    -moz-transform: rotate(30deg); /* Firefox */
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>translate()</h3>
+</hgroup>
+<article class="none">
+<p>给定x,y值，挪动当前元素的位置</p>
+<p><img alt="" src="http://m1.img.libdd.com/farm4/2013/0221/17/78C6FBC2D18E078D2BB2DF693302648C19136DCBB58EC_124_109.GIF" /></p>
+<pre class="prettyprint" data-lang="css">
+div {
+    -webkit-transform: translate(50px,100px);
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>rotate()</h3>
+</hgroup>
+<article class="none">
+<p>给定角度，旋转当前元素</p>
+<p><img alt="" src="http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF" /></p>
+<pre class="prettyprint" data-lang="css">
+div {
+    -webkit-transform: rotate(30deg);
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>scale()</h3>
+</hgroup>
+<article class="none">
+<p>给定横轴和纵轴，放大当前元素</p>
+<p><img alt="" src="http://m3.img.libdd.com/farm5/2013/0221/17/15D3CE0A77EB1D991CD515644ECF257CFEFDFD07BA2B2_126_126.GIF" /></p>
+<pre class="prettyprint" data-lang="css">
+div {
+    -webkit-transform: scale(2,4);
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>skew()</h3>
+</hgroup>
+<article class="none">
+<p>给定X轴角度和Y轴角度，将X轴，Y轴顺时针旋转</p>
+<p><img alt="" src="http://m1.img.libdd.com/farm4/2013/0221/17/87E12E003EC2E8EFF2CF592C2D031A67C3F99F8025A55_148_117.GIF" /></p>
+<pre class="prettyprint" data-lang="css">
+div {
+    -webkit-transform:skew(30deg,20deg);
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>matrix()</h3>
+</hgroup>
+<article class="none">
+<p>将所有的Transform方法集中到一起，含有6个参数：</p>
+<p><code>(a, b, c, d, tx, ty)</code></p>
+<p>matrix 涉及到矩阵运算，有兴趣的同学可以看下此文：</p>
+<p><a href="http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/">http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/</a>，</p>
+<p>当然前提是你线性代数没忘……</p>
+<p><img alt="" src="http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF" /></p>
+<pre class="prettyprint" data-lang="css">
+div {
+    -webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>与transition的一起使用</h3>
+</hgroup>
+<article class="none">
+<p>transform与transition一同使用的时候，我们可以制造出许多原本在浏览器上无法实现的动画效果！</p>
+<pre class="prettyprint" data-lang="css">
+.box {
+    -webkit-transform: rotate(10deg);
+    -webkit-transition: -webkit-transform 2s ease-in-out;
+}
+.box:hover {
+    -webkit-transform: rotate(-10deg);
+}
+</pre>
+
+<style type="text/css">
+#intro-transform {
+    width: 90%;
+    margin: 30px auto;
+    height: 100px;
+    background: #dbdc6d;
+    border-radius: 10px;
+    border: 1px solid #55562a;
+    -webkit-transform: rotate(10deg);
+    -webkit-transition: -webkit-transform 2s ease-in-out;
+    line-height: 100px;
+    text-align: center;
+}
+#intro-transform:hover {
+    -webkit-transform: rotate(-10deg);
+}
+</style>
+
+<div id="intro-transform">Hover on me!</div>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>Animation</h2>
+</hgroup>
+<article class="none">
+<pre><code>Animation可以说是一个大杀器了，
+通过设定不同的阶段的状态，然后再设置Animation的一些属性，
+则可以非常轻松的完成一系列的动画效果。
+学习animation首先需要了解一下 `keyframes`。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>keyframes</h3>
+</hgroup>
+<article class="none">
+<p>与大部分CSS3属性一样，又是各种前缀……</p>
+<pre class="prettyprint" data-lang="css">
+@keyframes somename {
+    /*some definition*/
+}
+@-o-keyframes somename {
+    /*some definition*/
+}
+@-moz-keyframes somename {
+    /*some definition*/
+}
+@-webkit-keyframes somename {
+    /*some definition*/
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>keyframes</h3>
+</hgroup>
+<article class="none">
+<p>keyframes实际上是定义每个阶段的状态，有这样的一些关键词：</p>
+<p><code>from, to, 0%, 25%, 100%</code></p>
+<p><code>from</code> 与 <code>0%</code>, <code>to</code> 与 <code>100%</code> 是相同的，百分比表示动画进行到百分比的时间时的状态。</p>
+<pre class="prettyprint" data-lang="css">
+@-webkit-keyframes simple {
+    from { background: red }
+    to { background: yellow }
+}
+@-webkit-keyframes complex {
+    0%      {-webkit-transform: rotate(0deg);left:0px;}
+    25%     {-webkit-transform: rotate(20deg);left:0px;}
+    50%     {-webkit-transform: rotate(0deg);left:800px;top:50px;}
+    55%     {-webkit-transform: rotate(0deg);left:800px;top:50px;}
+    70%     {-webkit-transform: rotate(0deg);left:800px;top:50px;background:#1ec7e6;}
+    100%    {-webkit-transform: rotate(-360deg);left:0px;}
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Animation Properties</h3>
+</hgroup>
+<article class="none">
+<p>Animation的属性需要指明它需要使用哪个keyframes, 一般来说第一个参数就是指定的那个keyframes的名称。如下：
+<pre class="prettyprint" data-lang="css">
+@-webkit-keyframes simple {
+    from { background: red }
+    to { background: yellow }
+}
+.box {
+    animation: simple 5s;
+    -o-animation: simple 5s; /<em> Opera </em>/
+    -moz-animation: simple 5s; /<em> Firefox </em>/
+    -webkit-animation: simple 5s; /<em> Safari and Chrome </em>/
+}
+</pre></p>
+<style type="text/css">
+@-webkit-keyframes simple {
+    from { background: red }
+    to { background: yellow }
+}
+#intro-animation-simple {
+    width: 90%;
+    margin: 0 auto;
+    background: red;
+    height: 100px;
+    border-radius: 10px;
+    animation: simple 5s;
+    -webkit-animation: simple 5s;
+}
+</style>
+
+<div id="intro-animation-simple"></div>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Animation</h3>
+</hgroup>
+<article class="none">
+<p>Animation含有较多的属性：</p>
+<ul>
+<li>animation-name: 指定的 keyframe 名称</li>
+<li>animation-duration: 动画持续时间</li>
+<li>animation-timing-function: 动画时间函数</li>
+<li>animation-delay: 动画延迟开始的时间</li>
+<li>animation-iteration-count: 动画执行次数 1/2/infinite</li>
+<li>animation-direction: 动画执行方向 normal/alternate</li>
+<li>animation-play-state: 动画播放状态 paused/running</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Animation</h3>
+</hgroup>
+<article class="none">
+<p>所以相比于简化版的 -webkit-animation，animation的属性还可以这样更加详细的指定：</p>
+<pre class="prettyprint" data-lang="css">
+.box {
+    -webkit-animation-name: complex;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+}
+</pre>
+
+<style type="text/css">
+@-webkit-keyframes complex {
+    0%      {-webkit-transform: rotate(0deg);left:0px;}
+    25%     {-webkit-transform: rotate(20deg);left:0px;}
+    50%     {-webkit-transform: rotate(0deg);left:800px;top:50px;}
+    55%     {-webkit-transform: rotate(0deg);left:800px;top:50px;}
+    70%     {-webkit-transform: rotate(0deg);left:800px;top:50px;background:#1ec7e6;}
+    100%    {-webkit-transform: rotate(-360deg);left:0px;}
+}
+#intro-animation-complex {
+    width: 60px;
+    height: 40px;
+    background: #92B901;
+    color: #ffffff;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 10px 5px;
+    -webkit-animation: complex 5s 2s infinite;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+</style>
+
+<div id="intro-animation-complex">SDO</div>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>监测Animation End</h3>
+</hgroup>
+<article class="none">
+<pre><code>与 transitionEnd 类似，可以通过setTimeout来处理，各浏览器也有对应的事件：
+</code></pre>
+<ul>
+<li>animationEnd</li>
+<li>oAnimationEnd</li>
+<li>webkitAnimationEnd</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>Media Query</h2>
+</hgroup>
+<article class="none">
+<pre><code>在前面的篇章中，
+我们已经使用到了媒体查询的属性。
+可以说这个是当下比较热门的技术解决方案了。
+这里对此做一个基本的介绍。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>使用方法</h3>
+</hgroup>
+<article class="none">
+<p>Media Query的引用语法有几种，可以根据需求和代码的风格来处理：</p>
+<p>inline</p>
+<pre class="prettyprint" data-lang="css">
+@media screen and (min-width: 1024px) {
+    /* Some CSS for Width >= 1024 */
+    .desc { background: red; }
+}
+</pre>
+
+<p>link</p>
+<pre class="prettyprint" data-lang="html">
+&lt;link rel="stylesheet" media="only screen and 
+(max-device-width:360px)" href="mobile360.css" type="text/css" />
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>使用方法</h3>
+</hgroup>
+<article class="none">
+<p>style+import</p>
+<pre class="prettyprint" data-lang="html">
+&lt;style type="text/css" media="screen and (min-width:1440px)">
+    @import url("huge.css");
+&lt;/style>
+</pre>
+
+<p>实际操作中，还是推荐使用前两种方法。</p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>设备类型</h3>
+</hgroup>
+<article class="none">
+<ul>
+<li>all：所有设备</li>
+<li>screen ：电脑显示器</li>
+<li>print：打印用纸或打印预览视图</li>
+<li>handheld：便携设备</li>
+<li>tv：电视机类型的设备</li>
+<li>speech：语意和音频盒成器</li>
+<li>braille：盲人用点字法触觉回馈设备</li>
+<li>embossed：盲文打印机</li>
+<li>projection：各种投影设备</li>
+<li>tty：使用固定密度字母栅格的媒介，比如电传打字机和终端</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>设备特性：</h3>
+</hgroup>
+<article class="none">
+<ul>
+<li>width：浏览器宽度</li>
+<li>height：浏览器高度</li>
+<li>device-width：设备屏幕分辨率的宽度值</li>
+<li>device-height：设备屏幕分辨率的高度值</li>
+<li>orientation：浏览器窗口的方向纵向还是横向，当窗口的高度值大于等于宽度时该特性值为portrait，否则为landscape。</li>
+<li>aspect-ratio：比例值，浏览器的纵横比.</li>
+<li>device-aspect-ratio：比例值，屏幕的纵横比.</li>
+<li>color：设备使用多少位的颜色值，如果不是彩色设备，值为0</li>
+<li>color-index：色彩表的色彩数</li>
+<li>monochrome：单色帧缓冲器每个像素的字节</li>
+<li>resolution：分辨率值，设备分辨率值</li>
+<li>scan：电视机类型设备扫描方式，progressive或interlace</li>
+<li>grid：只能指定两个值0或1</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>一些浏览器各异的设备特性</h3>
+</hgroup>
+<article class="none">
+<pre><code>设备屏幕像素比
+</code></pre>
+<ul>
+<li>Webkit: -webkit-device-pixel-ratio</li>
+<li>Firefox: -moz-device-pixel-ratio</li>
+<li>Opera: -o-device-pixel-ratio</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>几个关键词</h3>
+</hgroup>
+<article class="none">
+<p><code>max &amp; min</code></p>
+<p><code>max</code> 和 <code>min</code> 表示大于等于，小于等于：</p>
+<ul>
+<li>min-device-width: 361px 表示 if 设备宽度 &gt;= 361px</li>
+<li>max-device-width: 640 表示 if 设备宽度 &lt;= 640px</li>
+</ul>
+<p>如下表示当设备宽度介于 <code>361px</code> 和 <code>640px</code> 之间应用规则 <code>mobile640.css</code>:</p>
+<pre class="prettyprint" data-lang="html">
+&lt;link rel="stylesheet" media="screen and (min-device-width:361px)
+ and (max-device-width:640px)" href="mobile640.css" type="text/css" />
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>几个关键词</h3>
+</hgroup>
+<article class="none">
+<p><code>and</code></p>
+<p><code>and</code> 用来表示同时符合多个表达式的情况。</p>
+<pre class="prettyprint" data-lang="html">
+&lt;link rel="stylesheet" media="screen and (min-device-width:361px)
+ and (max-device-width:640px)" href="mobile640.css" type="text/css" />
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>几个关键词</h3>
+</hgroup>
+<article class="none">
+<p><code>only</code></p>
+<p><code>only</code> 用来表明仅仅符合该Query的才引用后续的style。</p>
+<p>一般来说，<code>only</code> 更多的是用来防止支持 media 属性，但不支持 Media Query的浏览器错误解析。</p>
+<pre class="prettyprint" data-lang="html">
+&lt;link rel="stylesheet" media="only screen and (max-device-width:360px)" 
+href="mobile360.css" type="text/css" />
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>几个关键词</h3>
+</hgroup>
+<article class="none">
+<p><code>not</code></p>
+<p>顾名思义，<code>not</code> 的作用就是排除不符合表达式的设备</p>
+<pre class="prettyprint" data-lang="html">
+&lt;link rel="stylesheet" media="not print (max-width:1024px)"
+ href="mobile360.css" type="text/css" />
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>几个关键词</h3>
+</hgroup>
+<article class="none">
+<p><code>prefix- related</code></p>
+<p>对于带有前缀的设备特性，涉及到的 <em>min</em> 和 <em>max</em> 关键字略有不同：</p>
+<ul>
+<li><code>-o-min-device-pixel-ratio</code></li>
+<li><code>-o-webkit-device-pixel-ratio</code></li>
+<li><code>min--moz-device-pixel-ratio</code></li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>小结</h2>
+</hgroup>
+<article class="none">
+<pre><code>CSS3 内容非常之多，这里只是涉及到一部分，有兴趣的话，大家可以私下再了解。
+这里也顺便推荐两个小站点，挺有意思：
+</code></pre>
+<ul>
+<li><a href="http://www.css3maker.com/">http://www.css3maker.com/</a></li>
+<li><a href="http://cssdeck.com/">http://cssdeck.com/</a></li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>III. Application Cache, Storage</h2>
 </hgroup>
 </slide>
 
 <slide>
 <hgroup>
-<p>fill</p>
+<h3>Application Cache</h3>
+</hgroup>
+<article class="none">
+<p>人们都认为Web应用在断网的时候就无法运行了。</p>
+<p>但是Application Cache给出了一个否定！</p>
+<p>可以参考这个网站：</p>
+<p><a href="http://everytimezone.com/">http://everytimezone.com/</a>，</p>
+<pre><code>断网的时候它照样可以打开，并且刷新页面。
+只要你不清除缓存。
+实际上，这不只是断网的问题，
+它还从大大减少了带宽的问题，降低了服务器压力。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>manifest</h3>
+</hgroup>
+<article class="none">
+<p>要激活 Application Cache，必须在 html 标签上加上一个属性 <code>manifest</code>。</p>
+<pre class="prettyprint" data-lang="html">
+&lt;html manifest="example.appcache">
+  ...
+&lt;/html>
+</pre>
+
+<p>一个最简单的 <code>manifest</code> 将会像这样：</p>
+<pre><code>CACHE MANIFEST
+index.html
+stylesheet.css
+images/logo.png
+scripts/main.js
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>manifest</h3>
+</hgroup>
+<article class="none">
+<p>这里有几点需要注意：</p>
+<ul>
+<li><code>CACHE MANIFEST</code> 是必须的，且必须在第一行</li>
+<li>有些浏览器对于可离线存储的数据是有限制的，如果你希望使用 <code>unlimitedStorage</code> ，参考那个浏览器的具体设定，比如 Chrome 仅允许 App 和 Extension 使用，通过设置 <code>manifest.json</code></li>
+<li>如果 <code>manifest</code> 下载失败，浏览器将使用旧的 <code>manifest</code></li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>较为复杂的 manifest</h3>
+</hgroup>
+<article class="none">
+<pre><code>CACHE MANIFEST
+CACHE:
+/favicon.ico
+index.html
+stylesheet.css
+images/logo.png
+scripts/main.js
+
+NETWORK: # Resources that require the user to be online.
+login.php
+/myapi
+http://api.twitter.com
+
+FALLBACK:
+/main.py /static.html # static.html will be served if main.py is inaccessible
+images/large/ images/offline.jpg # offline.jpg will be served in place of all images in images/large/
+*.html /offline.html # offline.html will be served in place of all other .html files
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>更新Cache</h3>
+</hgroup>
+<article class="none">
+<p>Application Cache只有在一下情况才会更新：</p>
+<ul>
+<li>用户清空缓存</li>
+<li><code>manifest</code>文件被修改，注意，改变 <code>manifest</code> 文件列表中的文件并不会更新缓存，只有<code>manifest</code>文件本身被修改才行</li>
+<li>App Cache被用程序强制更新</li>
+</ul>
+<pre class="prettyprint" data-lang="javascript">
+var appCache = window.applicationCache;
+appCache.update(); // Attempt to update the user's cache.
+if (appCache.status == window.applicationCache.UPDATEREADY) {
+  appCache.swapCache();  // The fetch was successful, swap in the new cache.
+}
+</pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h3>Application Cache</h3>
+</hgroup>
+<article class="none">
+<p>Application Cache的更多的内容可以参考：</p>
+<p><a href="http://www.whatwg.org/specs/web-apps/current-work/#applicationcache">http://www.whatwg.org/specs/web-apps/current-work/#applicationcache</a></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>参考文献及网站：</h2>
+</hgroup>
+<article class="none">
+<ul>
+<li>http://dev.w3.org/html5/html-author/</li>
+<li>http://www.html5rocks.com/</li>
+<li>https://developer.mozilla.org/en/docs/HTML</li>
+<li>http://diveintohtml5.info/</li>
+<li>http://www.w3schools.com/</li>
+<li>http://www.lovevoi.com/?p=166</li>
+<li>http://adamlu.com/?p=633</li>
+<li>http://www.iyunlu.com/view/Front-end/70.html</li>
+<li>http://iloves.org/2011/05/high-performance-mobile/</li>
+<li>http://blog.sina.com.cn/s/blog_6d48e77101016kzr.html</li>
+<li>等等……</li>
+</ul>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<style type="text/css">
+@-webkit-keyframes ending {
+    from { opacity: 0.1;font-size: 20px; }
+    to { opacity: 1;font-size: 250px; color: #a91012}
+}
+#intro-end {
+    height: 100%;
+    font-size: 100px;
+    text-align: center;
+    padding-top: 200px;
+    -webkit-animation: ending 2s linear infinite alternate;
+}
+</style>
+
+<div id="intro-end">
+    谢谢！
+</div>
 </hgroup>
 </slide>
 

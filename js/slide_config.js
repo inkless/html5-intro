@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
+    title: 'HTML5',
+    subtitle: '点点滴滴',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
@@ -18,12 +18,12 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title, Google',
-    gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
+    name: '章光达',
+    company: 'SDO',
+    gplus: 'http://plus.google.com/106347356246950344841',
+    twitter: '@BrotherLight',
+    www: 'http://www.zhangguangda.com',
+    github: 'http://github.com/inkless'
   }/*, {
     name: 'Second Name',
     company: 'Job Title, Google',
