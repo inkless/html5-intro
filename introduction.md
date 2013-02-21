@@ -231,7 +231,7 @@ $(window).on("orientationchange", function() { /*Do Something*/ });
     only screen and (min-resolution: 2dppx) /* 标准 */ {
     .header {
         background-image:url(http://path/of/pic/large.png); 
-        background-size: 50% 50%; /* will be introduced later */
+        background-size: 50% 50%;
     }
 }
 ```
@@ -327,58 +327,311 @@ if (navigator.onLine) {
 <input type="number" step="1" min="-5" max="10" value="0" />
 ```
 
-<style>
-  [required] {
-    border-color: #88a;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
-  }
-  :invalid {
-    border-color: #e88;
-    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
-  }
-  .intro_form {
+##### Form表单的type对键盘的影响
 
-  }
-</style>
-
-<div class="intro_form">
-	<input type="text" required />
-	<input type="email" value="zhang.gd@foxmail.com" />
-	<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
-	<input type="range" min="0" max="50" value="10" />
-	<input type="search" results="10" placeholder="搜索..." />
-	<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\d{3}\)?[-\s]\d{4}[-\s]\d{4}.*?$" />
-	<input type="color" placeholder="e.g. #bbbbbb" />
-	<input type="number" step="1" min="-5" max="10" value="0" />
-</div>
-
-
+![](http://m2.img.libdd.com/farm4/2013/0221/14/F2E43C3C37AB6E5126725151EE08FE774D0994A7FCAF5_881_302.PNG)
 
 #### Progress & Meter
+
+```html
+<meter min="0" max="100" low="40" high="90" optimum="100" value="91">A+</meter>
+<progress value="75" max="100">3/4 complete</progress>
+```
+
 #### dataset
+HTML5中对元素的 **data-xxx** 属性做了特殊的对待：
+
+```html
+    <div id="intro_dataset" data-id="good" data-name="joe" data-screen-name="user1"></div>
+    <script type="text/javascript">    
+	var el = document.querySelector('#intro_dataset');
+	el.setAttribute('data-foo', 'bar');
+	var html = [];
+	for (var key in el.dataset) {
+	  html.push(key, ': ', el.dataset[key], '<br>');
+	}
+	el.innerHTML = html.join('');
+    </script>
+```
+
 #### datalist
 
-### 移动端调试
+```html
+<input list="names"/>
+<datalist id="names">
+    <option value="Abe"/>
+    <option value="Carl"/>
+    <option value="David"/>
+    <option value="Joe"/>
+    <option value="Mac"/>
+    <option value="Michael"/>
+    <option value="Peter"/>
+</datalist>
+```
 
+### 移动端调试
+强烈推荐：**Apache: weinre**
+
+<http://people.apache.org/~pmuellr/weinre/>
 
 ## II. CSS3
-<http://www.css3maker.com/>
-<http://cssdeck.com/>
-### Border
 
-### Radiant
+CSS3引入了非常多有趣的技术和效果。我们这里挑出一些比较成熟的，有代表性的来一起看看。
 
-### Shadow
 
-### Background
+### Border, Gradient, Shadow
+最常用的几个效果类的属性，相信很多人已经很熟悉并且已经在使用了，这里只做一遍回顾
 
-### Transform
+#### Border
+```css
+.round {
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+```
+
+#### Gradient
+渐变效果很多时候可以替代早先图片background实现的效果。
+而对于IE，如果不支持的渐变的，则使用 纯色/背景图片平铺/filter 即可。（Trade-off）
+
+
+##### 渐变语法：
+
+* -webkit-gradient(type, start_point, end_point, from, to, / stop...)
+* -webkit-gradient(type, inner_center, inner_radius, outer_center, outer_radius, from, to, / stop...)
+
+```css
+.bg {
+    background: -webkit-gradient(linear, left top, left bottom, 
+        from(#00abeb), to(white), 
+        color-stop(0.5, white), color-stop(0.5, #66cc00))
+}
+.bg2 {
+    background: -webkit-gradient(radial, 430 50, 0, 430 50, 200, from(red), to(#000))
+}
+```
+
+##### 参数
+参数类型    简要说明
+
+type	渐变的类型，可以是线性渐变(linear)或是径向渐变(radial)
+
+start_point	渐变图像中渐变的起始点
+
+end_point	渐变图像中渐变的结束点
+
+stop	color-stop()方法，指定渐变进程中特定的颜色
+
+inner_center	内部中心点，径向渐变起始圆环
+
+inner_radius	内部半径，径向渐变起始圆
+
+outer_center	外部渐变结束圆的中心点
+
+outer_radius	外部渐变结束圆的半径
+
+from 渐变起始点的颜色
+
+to 渐变结束点的颜色
+
+#### Shadow
+阴影效果非常的炫丽，实现效果其实也很简单。
+
+##### Shadow语法：
+* text-shadow: color x-offset y-offset radius
+* -webkit-box-shadow: color x-offset y-offset radius
+
+```css
+.sh {
+    text-shadow: rgba(64, 64, 64, 0.498039) 0px 0px 5px;
+    -webkit-box-shadow: rgba(0, 0, 128, 0.247059) 0px 0px 8px;
+}
+```
 
 ### Transition
+通常实现页面的动画效果都是通过 JavaScript 的setInterval 或者 setTimeout 控制CSS值的变化来实现一个连贯的动作。
+CSS3则是直接提供了这么一个非常简单的属性，省去了JavaScript的工作。
+
+##### Transition语法：
+-webkit-transition: property time function delay
+
+* property: 具体对哪个属性进行 transition，可以是 all
+* time: 动画执行的时间
+* function: 动画的效果， ease/linear/ease-in/ease-out/ease-in-out/cubic-bezier(n,n,n,n)
+* delay: 延迟执行的时间
+
+```css
+.box {
+  -webkit-transition: margin-left 1s ease-in-out;
+}
+```
+
+##### 监测Transition结束
+动画完成后，我们往往要继续进行一些操作，或者继续动画。这时就需要监测Transition的结束了。这里介绍两种方法：
+###### 方法一：setTimeout
+最传统也最简单的方法应该就是这个 setTimeout 了。大家也知道这个使用的方法：
+
+```javascript
+setTimeout(function() {
+    // do something here
+}, 1000)
+```
+
+###### 方法二：onTransitionEnd
+在大多数浏览器上面，有一个 transitionEnd的事件。于是我们可以考虑使用这个事件，具体代码如下：
+
+```javascript
+var myDiv, transition;
+myDiv = document.getElementById('demo');
+if('ontransitionend' in window) {
+  // Firefox
+  transition = 'transitionend';
+} else if('onwebkittransitionend' in window) {
+  // Chrome/Safari (+ Mobile Safari)/Android
+  transition = 'webkitTransitionEnd';
+} else if('onotransitionend' in myDiv || navigator.appName == 'Opera') {
+  // Opera
+  // 在Opera 10.61, DOM元素中不存在"onotransitionend" 属性
+  // 所以转而判断appName是否为Opera
+  transition = 'oTransitionEnd';
+} else {
+  // 无视IE吧
+  transition = false;
+}
+myDiv.addEventListener(transition, function(){
+  //alert(Date.now() + ' transition end!');
+}, false);
+```
+
+### Transform
+Transform提供了强大对于既有元素变形的能力。它拥有若干函数可以操作元素。
+甚至包括了一些3D方法，这里就只涉及到一些2D的功能。
+
+```css
+div {
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Safari and Chrome */
+    -o-transform: rotate(30deg); /* Opera */
+    -moz-transform: rotate(30deg); /* Firefox */
+}
+```
+
+#### translate()
+给定x,y值，挪动当前元素的位置
+
+![](http://m1.img.libdd.com/farm4/2013/0221/17/78C6FBC2D18E078D2BB2DF693302648C19136DCBB58EC_124_109.GIF)
+
+```css
+div {
+    -webkit-transform: translate(50px,100px);
+}
+```
+
+#### rotate()
+给定角度，旋转当前元素
+
+![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+
+```css
+div {
+    -webkit-transform: rotate(30deg);
+}
+```
+
+#### scale()
+给定横轴和纵轴，放大当前元素
+
+![](http://m3.img.libdd.com/farm5/2013/0221/17/15D3CE0A77EB1D991CD515644ECF257CFEFDFD07BA2B2_126_126.GIF)
+
+```css
+div {
+    -webkit-transform: scale(2,4);
+}
+```
+
+#### skew()
+给定X轴角度和Y轴角度，将X轴，Y轴顺时针旋转
+![](http://m1.img.libdd.com/farm4/2013/0221/17/87E12E003EC2E8EFF2CF592C2D031A67C3F99F8025A55_148_117.GIF)
+
+```css
+div {
+    -webkit-transform:skew(30deg,20deg);
+}
+```
+
+#### matrix()
+将所有的Transform方法集中到一起，含有6个参数：
+
+(a, b, c, d, tx, ty)
+
+
+matrix 涉及到矩阵运算，有兴趣的同学可以看下此文：
+<http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/>，当然前提是你线性代数没忘……
+
+![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+
+```css
+div {
+    -webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+}
+```
+
+#### 与transition的一起使用
+transform与transition一同使用的时候，我们可以制造出许多原本在浏览器上无法实现的动画效果！
+
+```css
+.box {
+  -webkit-transform: rotate(10deg);
+  -webkit-transition: -webkit-transform 2s ease-in-out;
+}
+.box:hover {
+  -webkit-transform: rotate(-10deg);
+}
+```
 
 ### Animation
+Animation可以说是一个大杀器了，通过设定不同的阶段的状态，然后再设置Animation的一些属性，则可以非常轻松的完成一系列的动画效果。学习animation首先需要了解一下 **keyframes**。
+
+#### key-frames
+与大部分CSS3属性一样，又是各种前缀……
+
+```css
+@keyframes somename {
+    /*some definition*/
+}
+@-o-keyframes somename {
+    /*some definition*/
+}
+@-moz-keyframes somename {
+    /*some definition*/
+}
+@-webkit-keyframes somename {
+    /*some definition*/
+}
+```
+
+key-frames实际上是定义每个阶段的状态，有这样的一些关键词：
+
+* from
+* to
+* 0%
+* 25%
+* 100%
+
+from 与 0%, to 与 100% 是相同的，百分比表示动画进行到百分比的时间时的状态，比如我们定义一个最简单的 keyframes:
+
+```css
+
+```
 
 ### Media Query
+
+<http://www.css3maker.com/>
+<http://cssdeck.com/>
 
 ## III. Application Cache, Storage
 ### Application Cache

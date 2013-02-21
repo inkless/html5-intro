@@ -1,0 +1,179 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Presentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+<slide>
+<hgroup>
+<h1>HTML5 INTRODUCTION</h1>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>What's new in HTML5</h2>
+<ul>
+<li>New Elements, Attributes</li>
+<li>Canvas, SVG</li>
+<li>CSS3</li>
+<li>Video, Audio</li>
+<li>Storage</li>
+<li>Web Worker, File Operation</li>
+<li>etc.</li>
+</ul>
+</hgroup>
+<article class="fill">
+<aside class="note">
+  这些是啥来的，其实有人知道么
+</aside>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<p>HTML5涉及到的新的东西实在太多了，我自己本身也有很多不了解。而且我也不想讲得太泛泛，所以想寻找几个我们工作中最可能用到的来讲讲，大家共同学习</p>
+</hgroup>
+<article class="fill">
+<p>除了HTML5，CSS3，有些不算是属于HTML5但是跟工作相关的一些，也想籍此顺便讲一讲，比如<em>移动端开发</em>, <em>responsive design</em>, <em>ECMAScript 5</em></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<p><strong>注意：</strong> 这绝对不是一个完整的HTML5的介绍，有机会的话或许会慢慢补齐。
+但是我发现如果完整的去学习一套理论，对谁都是一个很大的负担。我只是希望大家看过这些介绍之后，能确实有所获得，那么在以后的学习中，能带着一些思考去学习，可能效果会更好。</p>
+</hgroup>
+<article class="fill">
+<pre><code>我刚开始学习JavaScript的时候，看的JavaScript: the Definitive Guide。
+但是事实证明，当时选择那本书绝对是不明智的，事实上我也没能坚持看完，
+看了几十页就不看了。在做了不少的项目和一些历练之后，我回过头再去看这
+本大而全的书的时候，体会则完全不一样了。所以从我自己的角度来说，有的
+时候，我觉得像捡面包屑一样，一点一点捡一些，有所心得之后，再找一本大
+而全的权威指南看一遍，那种融会贯通的感觉肯定很爽。
+</code></pre>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>I. CSS3</h2>
+<p><style>
+  [required] {
+    border-color: #88a;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+  }
+  :invalid {
+    border-color: #e88;
+    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  }
+</style>
+<input type="text" required />
+<input type="email" value="zhang.gd@foxmail.com" />
+<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+<input type="range" min="0" max="50" value="10" />
+<input type="search" results="10" placeholder="搜索..." />
+<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\\d{3}\)?[-\\s]\\d{4}[-\\s]\\d{4}.*?$" />
+<input type="color" placeholder="e.g. #bbbbbb" />
+<input type="number" step="1" min="-5" max="10" value="0" /></p>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>II. Canvas</h2>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>III. Storage, Application Cache</h2>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>IV. File Operation &amp; Web Worker</h2>
+</hgroup>
+<article class="fill">
+<p><code>new Worker</code></p>
+</article>
+</slide>
+
+<slide>
+<hgroup>
+<h2>V. 移动端的开发</h2>
+<p>viewport, orientation, online, apple-touch-icon 等
+移动端的调试</p>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>VI. Other Related 2  响应式设计</h2>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<h2>VII. Other Related 3  ECMAScript 5</h2>
+</hgroup>
+</slide>
+
+<slide>
+<hgroup>
+<p>fill</p>
+</hgroup>
+</slide>
+
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

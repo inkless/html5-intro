@@ -36,6 +36,24 @@ HTML5涉及到的新的东西实在太多了，我自己本身也有很多不了
 ***
 
 ## I. CSS3
+<style>
+  [required] {
+    border-color: #88a;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+  }
+  :invalid {
+    border-color: #e88;
+    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  }
+</style>
+<input type="text" required />
+<input type="email" value="zhang.gd@foxmail.com" />
+<input type="date" min="1988-01-01" max="2013-12-12" value="2013-02-22"/>
+<input type="range" min="0" max="50" value="10" />
+<input type="search" results="10" placeholder="搜索..." />
+<input type="tel"  placeholder="(021) 2222-8888" pattern="^\(?\d{3}\)?[-\s]\d{4}[-\s]\d{4}.*?$" />
+<input type="color" placeholder="e.g. #bbbbbb" />
+<input type="number" step="1" min="-5" max="10" value="0" />
 
 ***
 
