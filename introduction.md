@@ -53,11 +53,11 @@ Viewport的属性共有7种：
 
 **竖屏**
 
-![Alt text](http://m2.img.libdd.com/farm4/2013/0220/20/9FF8D77501969C9923D8216BD707BBB50C5E015895EBC_500_800.jpg)
+<img src="images/viewport1.jpg" width="250">
 
 **横屏**
 
-![Alt text](http://m2.img.libdd.com/farm4/2013/0220/20/267EE7C2B1B9EB81A354336B50E09D49442F7E2266DE1_500_313.jpg)
+![Alt text](http://inkless.github.com/html5-intro/images/viewport3.jpg)
 
 ##### 设置 width=320
 
@@ -68,11 +68,11 @@ Viewport的属性共有7种：
 
 **竖屏**
 
-![Alt text](http://m1.img.libdd.com/farm4/2013/0220/20/09C2E15DF71C7DFD35CD3BA045996DF6CBBDC13D15E0C_250_400.jpg)
+<img src="images/viewport4.jpg" width="250">
 
 **横屏**
 
-![Alt text](http://m1.img.libdd.com/farm5/2013/0220/20/8CEFCEC4E346906565D143E940FDD97AC27920920B1BA_500_313.jpg)
+![Alt text](http://inkless.github.com/html5-intro/images/viewport5.jpg)
 
 #### 设置 sacle
 * **initial-scale** = Float Number(如 1.0 / 1 / 0.5)
@@ -96,11 +96,11 @@ PPI，有时也叫DPI，所表示的是每英寸所拥有的像素（pixel）数
 
 PPI准确的计算公式：
 
-![](http://m2.img.libdd.com/farm4/2013/0220/21/BFA4B3989F54DD003418E3CFF9B23677E5E7703F62222_250_155.jpg)
+![](http://inkless.github.com/html5-intro/images/ppi.jpeg)
 
 常见的一些屏幕尺寸和对应的 DPI
 
-![](http://m1.img.libdd.com/farm5/2013/0220/21/970E5D7327BE2E522E556C4787C63944EB1A1D292D92F_640_426.JPEG)
+![](http://inkless.github.com/html5-intro/images/dpi_list.jpeg)
 
 实际设置了target-densitydpi之后的页面:
 
@@ -108,7 +108,7 @@ PPI准确的计算公式：
 <meta name="viewport" content="target-densitydpi=device-dpi,width=device-width,initial-scale=1,maximum-scale=1">
 ```
 
-![](http://m2.img.libdd.com/farm5/2013/0220/21/88C52C0E0F08D71BF4EBEEA0F4100E7AB13D0E6ECB72B_250_400.jpg)
+![](http://inkless.github.com/html5-intro/images/viewport6.jpg)
 
 ##### 通过Media Query实现不同屏幕加载不同的CSS
 
@@ -190,15 +190,15 @@ $(window).on("orientationchange", function() { /*Do Something*/ });
 ##### 查看应用了以上CSS之后的效果
 移动设备竖屏，宽高比400x519
 
-![](http://m3.img.libdd.com/farm4/2013/0221/13/76C11A965272F8CF10397A419526AFCA9798BB957EDDD_250_400.jpg)
+![](http://inkless.github.com/html5-intro/images/mq2.jpg)
 
 移动设备横屏，宽高比640x327
 
-![](http://m1.img.libdd.com/farm5/2013/0221/13/25E4FF80684612516CA99152818AB1EBA5A5EEF99E75E_250_156.jpg)
+![](http://inkless.github.com/html5-intro/images/mq3.jpg)
 
 电脑，宽高比1275x783
 
-![](http://m2.img.libdd.com/farm5/2013/0221/13/C5A0C4FF20252429694AF7D72DE59AEAB1BAD0B5C04CD_250_172.jpg)
+![](http://inkless.github.com/html5-intro/images/mq1.png)
 
 当然这样写显得比较拥挤，不太好维护，还有一种更为友好的做法：
 
@@ -329,7 +329,7 @@ if (navigator.onLine) {
 
 ##### Form表单的type对键盘的影响
 
-![](http://m2.img.libdd.com/farm4/2013/0221/14/F2E43C3C37AB6E5126725151EE08FE774D0994A7FCAF5_881_302.PNG)
+![](http://inkless.github.com/html5-intro/images/form.png)
 
 #### Progress & Meter
 
@@ -528,7 +528,7 @@ div {
 #### translate()
 给定x,y值，挪动当前元素的位置
 
-![](http://m1.img.libdd.com/farm4/2013/0221/17/78C6FBC2D18E078D2BB2DF693302648C19136DCBB58EC_124_109.GIF)
+![](http://inkless.github.com/html5-intro/images/transform_translate.gif)
 
 ```css
 div {
@@ -539,7 +539,7 @@ div {
 #### rotate()
 给定角度，旋转当前元素
 
-![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+![](http://inkless.github.com/html5-intro/images/transform_rotate.gif)
 
 ```css
 div {
@@ -550,7 +550,7 @@ div {
 #### scale()
 给定横轴和纵轴，放大当前元素
 
-![](http://m3.img.libdd.com/farm5/2013/0221/17/15D3CE0A77EB1D991CD515644ECF257CFEFDFD07BA2B2_126_126.GIF)
+![](http://inkless.github.com/html5-intro/images/transform_scale.gif)
 
 ```css
 div {
@@ -561,7 +561,7 @@ div {
 #### skew()
 给定X轴角度和Y轴角度，将X轴，Y轴顺时针旋转
 
-![](http://m1.img.libdd.com/farm4/2013/0221/17/87E12E003EC2E8EFF2CF592C2D031A67C3F99F8025A55_148_117.GIF)
+![](http://inkless.github.com/html5-intro/images/transform_skew.gif)
 
 ```css
 div {
@@ -578,7 +578,7 @@ div {
 matrix 涉及到矩阵运算，有兴趣的同学可以看下此文：
 <http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/>，当然前提是你线性代数没忘……
 
-![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+![](http://inkless.github.com/html5-intro/images/transform_matrix.gif)
 
 ```css
 div {
