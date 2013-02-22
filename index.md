@@ -66,9 +66,9 @@ Viewport的属性共有7种：
 </pre>
 
 竖屏
-<img src="http://m2.img.libdd.com/farm4/2013/0220/20/9FF8D77501969C9923D8216BD707BBB50C5E015895EBC_500_800.jpg" width="250">
+<img src="images/viewport1.jpg" width="250">
 横屏
-![Alt text](http://m2.img.libdd.com/farm4/2013/0220/20/267EE7C2B1B9EB81A354336B50E09D49442F7E2266DE1_500_313.jpg)
+![Alt text](images/viewport3.jpg)
 
 ---
 
@@ -78,8 +78,8 @@ Viewport的属性共有7种：
 </pre>
 
 竖屏
-![Alt text](http://m1.img.libdd.com/farm4/2013/0220/20/09C2E15DF71C7DFD35CD3BA045996DF6CBBDC13D15E0C_250_400.jpg)
-![Alt text](http://m1.img.libdd.com/farm5/2013/0220/20/8CEFCEC4E346906565D143E940FDD97AC27920920B1BA_500_313.jpg)
+<img src="images/viewport4.jpg" width="250">
+![Alt text](images/viewport5.jpg)
 横屏
 
 注: 我的经验中，设置了固定的width以后，scale相关属性一般不生效
@@ -116,13 +116,13 @@ PPI，有时也叫DPI，所表示的是每英寸所拥有的像素（pixel）数
 
 PPI准确的计算公式：
 
-![](http://m2.img.libdd.com/farm4/2013/0220/21/BFA4B3989F54DD003418E3CFF9B23677E5E7703F62222_250_155.jpg)
+![](images/ppi.jpeg)
 
 ---
 
 ### 常见的一些屏幕尺寸和对应的 DPI
 
-![](http://m1.img.libdd.com/farm5/2013/0220/21/970E5D7327BE2E522E556C4787C63944EB1A1D292D92F_640_426.JPEG)
+![](images/dpi_list.jpeg)
 
 ---
 
@@ -133,7 +133,7 @@ PPI准确的计算公式：
 initial-scale=1,maximum-scale=1">
 </pre>
 
-![](http://m2.img.libdd.com/farm5/2013/0220/21/88C52C0E0F08D71BF4EBEEA0F4100E7AB13D0E6ECB72B_250_400.jpg)
+![](images/viewport6.jpg)
 
 ---
 
@@ -240,10 +240,10 @@ $(window).on("orientationchange", function() {
 @media screen and (min-width: 640px) and (max-width: 1023px) {.desc { background: green; } }
 </pre>
 
-宽高比400x519
-![](http://m3.img.libdd.com/farm4/2013/0221/13/76C11A965272F8CF10397A419526AFCA9798BB957EDDD_250_400.jpg)
-宽高比640x327
-![](http://m1.img.libdd.com/farm5/2013/0221/13/25E4FF80684612516CA99152818AB1EBA5A5EEF99E75E_250_156.jpg)
+400x519
+![](images/mq2.jpg)
+640x327
+![](images/mq3.jpg)
 
 ---
 
@@ -251,7 +251,7 @@ $(window).on("orientationchange", function() {
 <pre class="prettyprint" data-lang="css">
 @media screen and (min-width: 1024px) {.desc { background: red; } }
 </pre>
-![](http://m2.img.libdd.com/farm5/2013/0221/23/7ABFC3CE14F2184C006775A2730C5F55F0EC71285A00D_800_551.jpg)
+![](images/mq1.png)
 
 ---
 
@@ -425,7 +425,7 @@ if (navigator.onLine) {
 
 ### Form表单的type对键盘的影响
 
-![](http://m2.img.libdd.com/farm4/2013/0221/14/F2E43C3C37AB6E5126725151EE08FE774D0994A7FCAF5_881_302.PNG)
+![](images/form.png)
 
 ---
 
@@ -838,7 +838,7 @@ div {
 
 给定x,y值，挪动当前元素的位置
 
-![](http://m1.img.libdd.com/farm4/2013/0221/17/78C6FBC2D18E078D2BB2DF693302648C19136DCBB58EC_124_109.GIF)
+![](images/transform_translate.gif)
 
 <pre class="prettyprint" data-lang="css">
 div {
@@ -852,7 +852,7 @@ div {
 
 给定角度，旋转当前元素
 
-![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+![](images/transform_rotate.gif)
 
 <pre class="prettyprint" data-lang="css">
 div {
@@ -866,7 +866,7 @@ div {
 
 给定横轴和纵轴，放大当前元素
 
-![](http://m3.img.libdd.com/farm5/2013/0221/17/15D3CE0A77EB1D991CD515644ECF257CFEFDFD07BA2B2_126_126.GIF)
+![](images/transform_scale.gif)
 
 <pre class="prettyprint" data-lang="css">
 div {
@@ -880,7 +880,7 @@ div {
 
 给定X轴角度和Y轴角度，将X轴，Y轴顺时针旋转
 
-![](http://m1.img.libdd.com/farm4/2013/0221/17/87E12E003EC2E8EFF2CF592C2D031A67C3F99F8025A55_148_117.GIF)
+![](images/transform_skew.gif)
 
 <pre class="prettyprint" data-lang="css">
 div {
@@ -903,7 +903,7 @@ matrix 涉及到矩阵运算，有兴趣的同学可以看下此文：
 
 当然前提是你线性代数没忘……
 
-![](http://m2.img.libdd.com/farm5/2013/0221/17/9A44EB2E53962A5E6373841B78FC7C0E6F2C6554EABF9_131_120.GIF)
+![](images/transform_matrix.gif)
 
 <pre class="prettyprint" data-lang="css">
 div {
