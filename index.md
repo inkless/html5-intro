@@ -1378,6 +1378,7 @@ Application Cache的更多的内容可以参考：
 
 ## 参考文献及网站：
 
+- UI 来自于 Google IO 2012
 - http://dev.w3.org/html5/html-author/
 - http://www.html5rocks.com/
 - https://developer.mozilla.org/en/docs/HTML
