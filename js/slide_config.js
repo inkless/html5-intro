@@ -19,7 +19,7 @@ var SLIDE_CONFIG = {
   // Author information
   presenters: [{
     name: '章光达',
-    company: 'SDO',
+    company: 'SDO Web产品部',
     gplus: 'http://plus.google.com/106347356246950344841',
     twitter: '@BrotherLight',
     www: 'http://www.zhangguangda.com',
