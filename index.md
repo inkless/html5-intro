@@ -187,7 +187,7 @@ $(window).on("orientationchange", function() {
 
 同时，还有一个属性:
 
-***window.orientation*** 表明当前旋转的角度（逆时针方向）
+***window.orientation*** 表明当前旋转的角度
 
 0 / 90 / -90 / 180
 
