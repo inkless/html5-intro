@@ -461,6 +461,10 @@ if (navigator.onLine) {
 &lt;/datalist>
 </pre>
 
+<!--
+并不是通用
+-->
+
 <style type="text/css">
 #intro-datalist {
 	border: 1px solid #CCC;
@@ -1390,22 +1394,3 @@ Application Cache的更多的内容可以参考：
 - http://iloves.org/2011/05/high-performance-mobile/
 - http://blog.sina.com.cn/s/blog_6d48e77101016kzr.html
 - 等等……
-
----
-
-<style type="text/css">
-@-webkit-keyframes ending {
-	from { opacity: 0.1;font-size: 20px; }
-    to { opacity: 1;font-size: 250px; color: #a91012}
-}
-#intro-end {
-	height: 100%;
-	font-size: 100px;
-	text-align: center;
-	padding-top: 200px;
-	-webkit-animation: ending 2s linear infinite alternate;
-}
-</style>
-<div id="intro-end">
-	谢谢！
-</div>
